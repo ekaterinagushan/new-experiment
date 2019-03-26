@@ -3,186 +3,37 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1" >
     <script src="jquery.js" charset="utf-8"></script>
-
-    <style>
-      * {
-        transition: all 0.6s ease;
-      }
-
-      html,body {
-        display: flex;
-        width: 100%;
-        height: 100%;
-        margin: 0;
-        background-color:#FAFAFA;
-        background-image: linear-gradient(silver 1px, transparent 1px),
-        linear-gradient(90deg, silver 1px, transparent 1px);
-        background-size: 20px 20px, 20px 20px, 20px 20px, 20px 20px;
-        background-position:-1px -1px, -1px -1px, -1px -1px, -1px -1px;
-        }
-
-
-       #artwork {
-        position: absolute;
-        overflow: hidden;
-        width: 100vw;
-        height: 100vh;
-        z-index: 1;
-      }
-
-
-      div {
-        position: absolute;
-        will-change: transform;
-      }
-
-      img.rot {
-        animation: 2s linear 0s normal none infinite running rot;
-        -webkit-animation: 2s linear 0s normal none infinite running rot;
-        width: 50%;
-      }
-      @keyframes rot {
-        0% {
-          transform: rotate(0deg);
-        }
-        100% {
-          transform: rotate(360deg);
-        }
-      }
-      @-webkit-keyframes rot {
-        0% {
-          transform: rotate(0deg);
-        }
-        100% {
-          transform: rotate(360deg);
-        }
-      }
-
-    </style>
-
-    <script type="text/javascript">
-      function generateRectangles(quantity) {
-        const element = "<div></div>"
-        let elements = ""
-        let step
-
-        for (step = 0; step < quantity; step++) {
-          elements += element
-        }
-
-        $("#artwork").append(elements)
-      }
-
-      function getRandomArbitrary(min, max) {
-        return Math.floor(Math.random() * (max - min)) + min
-      }
-
-
-      function generatePercent(limit) {
-        let number = Math.round(Math.random() * limit)
-        return number
-      }
-
-      function generateSize() {
-        return generatePercent(95)
-      }
-
-      function generateShift(size) {
-        let limit = 100 - size
-        return generatePercent(limit)
-      }
-
-      function generateColorChannel() {
-        return getRandomArbitrary(100, 256)
-      }
-
-      function generateColor() {
-        const r = generateColorChannel()
-        const g = generateColorChannel()
-        const b = generateColorChannel()
-      }
-
-      function changeRectangleCSS(element) {
-        const width  = generateSize()
-        const height = generateSize()
-        const x = generateShift(width) + "%"
-        const y = generateShift(height) + "%"
-        const translate = [x, y].join()
-        const scale = Math.random() * (1.5 - 0.2) + 0.2
-        const rotate = 0
-        const skewX = 0
-        const skewY = 0
-
-        element.css({
-          "transform":        "translate(" + translate + ") translateZ(0) scale(" + scale + ")" + "rotate(" + rotate + "deg)" + "skewX(" + skewX + "deg)" + "skewY(" + skewY + "deg)",
-          "width":            width + "%",
-          "height":           height + "%",
-          "background-color": generateColor()
-        })
-      }
-
-
-      function changeRectanglesCSS() {
-        $("div").each(function() {
-          changeRectangleCSS($(this))
-        })
-      }
-
-      function changeRectangleOnTime() {
-        setTimeout(function() {
-          changeRectanglesCSS()
-          changeRectangleOnTime()
-        }, 800)
-      }
-
-      $(function() {
-        generateRectangles(10)
-        changeRectangleOnTime()
-      })
-
-      $(function() {
-        $("div").each(function(index) {
-          let width  = 500
-          let height = 400
-          let x      = 150
-          let y      = 150
-          $(this).css({
-            "top": y + "px",
-            "left": x + "px",
-            "width":  width + "px",
-            "height": height + "px",
-          })
-          $(this).on("mouseenter", function() {
-            let width  = Math.floor(Math.random() * 1000) + 500
-            let height = Math.floor(Math.random() * 1000) +500
-            let x      = Math.floor(Math.random() * 800) +200
-            let y      = Math.floor(Math.random() * 300) +200
-            $(this).css({
-              "top": y + "px",
-              "left": x + "px",
-              "width":  width + "px",
-              "height": height + "px",
-            })
-          })
-        })
-      })
-
-    </script>
+    <script src="script.js"></script>
   </head>
-
   <body>
     <section id="artwork">
-      <div><img class="rot" src="img/man.png"></div>
-      <div><img class="rot" src="img/woman.png"></div>
-      <div><img  src="img/man1.png"></div>
-      <div><img  src="img/woman2.png"></div>
-      <div><img class="rot" src="img/holon.png"></div>
-      <div><img  src="img/woman1.png"></div>
-      <div><img class="rot" src="img/man2.png"></div>
-      <div><img  src="img/holon.png"></div></section>
-
+      <div>
+        <img class="rot" src="img/man.png">
+      </div>
+      <div>
+        <img class="rot" src="img/woman.png">
+      </div>
+      <div>
+        <img  src="img/man1.png">
+      </div>
+      <div>
+        <img  src="img/woman2.png">
+      </div>
+      <div>
+        <img class="rot" src="img/holon.png">
+      </div>
+      <div>
+        <img  src="img/woman1.png">
+      </div>
+      <div>
+        <img class="rot" src="img/man2.png">
+      </div>
+      <div>
+        <img  src="img/holon.png">
+      </div>
     </section>
-
   </body>
 </html>
